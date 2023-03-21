@@ -5,9 +5,14 @@ function getComputerChoice() {
   return choices[random];
 }
 
-function rockPaperScissors(userChoice, computerChoice) {
-  console.log(`computer: ${computerChoice}`);
-  console.log(`user: ${userChoice}`);
+function rockPaperScissors(userChoice) {
+  computerChoice = getComputerChoice();
+  //select node
+  compChoiceNode = document.querySelector(".computerChoice");
+  userChoiceNode = document.querySelector(".userChoice");
+  //modify node
+  userChoiceNode.textContent = `User Choice: ${userChoice}`;
+  compChoiceNode.textContent = `Computer Choice: ${computerChoice}`;
 
   if (userChoice === computerChoice) {
     return "It's a tie!";
@@ -24,7 +29,8 @@ buttons = document.querySelectorAll("#container button");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(rockPaperScissors(button.id, getComputerChoice()));
+    resultNode = document.querySelector(".result");
+    resultNode.textContent = `${rockPaperScissors(button.id)}`;
   });
 });
 
